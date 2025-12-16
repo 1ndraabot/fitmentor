@@ -21,31 +21,35 @@
         </div>
     </div>
     {{-- Konten --}}
-    <form action="" method="post" class="mx-36 mt-10 flex flex-col gap-5 border-2 border-red-base p-5 rounded-xl">
+    <form action="{{ route('addGigStore') }}" method="POST" class="mx-36 mt-10 flex flex-col gap-5 border-2 border-red-base p-5 rounded-xl">
+        @csrf
         <div class="flex flex-col gap-2">
-            <label for="nama" class="text-lg font-semibold">Judul Gigs</label>
-            <input type="text" value="" class="border rounded-lg p-2" placeholder="Cotoh: Personal Training - Fitness & Gym">
+            <label for="judul" class="text-lg font-semibold">Judul Gigs</label>
+            <input type="text" name="judul_gigs" class="border rounded-lg p-2" placeholder="Cotoh: Personal Training - Fitness & Gym">
         </div>
         <div class="flex flex-col gap-2">
             <label for="kategori" class="text-lg font-semibold">Kategori Olahraga</label>
-            <select name="kategori" id="kategori" class="border rounded-lg p-2">
+            <select name="kategori_olahraga" id="kategori" class="border rounded-lg p-2">
                 <option value="" disabled selected>Pilih Kategori</option>
                 <option value="fitness">Fitness & Gym</option>
                 <option value="yoga">Yoga</option>
                 <option value="renang">Berenang</option>
+                <option value="sepakbola">Sepak Bola</option>
+                <option value="basket">Basket</option>
+                <option value="lari">Lari</option>
             </select>
         </div>
         <div class="flex flex-col gap-2">
             <label for="durasi" class="text-lg font-semibold">Durasi Program</label>
-            <input type="number" value="" class="border rounded-lg p-2" placeholder="Contoh: 30 hari">
+            <input type="number" name="durasi" value="" class="border rounded-lg p-2" placeholder="Contoh: 30 hari">
         </div>
         <div class="flex flex-col gap-2">
             <label for="durasi" class="text-lg font-semibold">Harga</label>
-            <input type="number" value="" class="border rounded-lg p-2" placeholder="200.000">
+            <input type="number" name="harga" value="" class="border rounded-lg p-2" placeholder="200.000">
         </div>
         <div class="flex flex-col gap-2">
             <label for="deskripsi" class="text-lg font-semibold">Deskripsi Program</label>
-            <textarea name="deskripsi" id="deskripsi" rows="5" class="resize-none border rounded-lg p-2" placeholder="Jelaskan detail Program, target peserta, manfaat, dan apa yang akan dipelajari..."></textarea>
+            <textarea name="deskripsi" name="deskripsi" id="deskripsi" rows="5" class="resize-none border rounded-lg p-2" placeholder="Jelaskan detail Program, target peserta, manfaat, dan apa yang akan dipelajari..."></textarea>
         </div>
         <button type="submit" class="text-2xl text-white bg-red-base rounded-xl font-semibold py-4">Publikasikan</button>
     </form>

@@ -15,12 +15,12 @@
             <h1 class="font-platypi font-medium text-[22px] text-white">Your Personal Fitness Mentor.</h1>
         </div>
         <div class="flex gap-10">
-            <a href="#" class="text-white font-medium">Beranda</a>
+            {{-- <a href="#" class="text-white font-medium">Beranda</a> --}}
             <a href="#" class="text-white font-medium">Dashboard Saya</a>
             <a href="#" class="text-white font-medium">Riwayat</a>
             <button class="flex gap-2 h-fit px-6 py-2 border bg-white rounded-lg text-red-base font-medium">
                 <img src="#" alt="Profile">
-                <p class="text-red-base font-medium">User</p>
+                <p class="text-red-base font-medium">{{session('nama_user')}}</p>
             </button>
         </div>
     </div>
@@ -45,7 +45,59 @@
                     
                     <tbody>
                         
-                        <tr class="border-b hover:bg-gray-50 transition duration-150">
+                        @forelse ($riwayat as $item)
+                            <tr class="border-b hover:bg-gray-50 transition duration-150">
+                                {{-- Tanggal --}}
+                                <td class="p-4 align-top">
+                                    <span class="block text-base font-medium text-gray-800">
+                                        {{ \Carbon\Carbon::parse($item->tanggal_pembayaran)->format('d M') }}
+                                    </span>
+                                    <span class="block text-sm text-gray-500">
+                                        {{ \Carbon\Carbon::parse($item->tanggal_pembayaran)->format('Y') }}
+                                    </span>
+                                </td>
+
+                                {{-- Program --}}
+                                <td class="p-4 align-top text-base font-bold text-gray-800">
+                                    {{ $item->judul_gigs }}
+                                </td>
+
+                                {{-- Mentor --}}
+                                <td class="p-4 align-top text-gray-700">
+                                    {{ $item->nama_mentor }}
+                                </td>
+
+                                {{-- Metode --}}
+                                <td class="p-4 align-top text-gray-700">
+                                    {{ $item->nama_metode }}
+                                </td>
+
+                                {{-- Jumlah --}}
+                                <td class="p-4 align-top text-right text-red-600 font-bold text-base">
+                                    Rp {{ number_format($item->jumlah_pembayaran, 0, ',', '.') }}
+                                </td>
+
+                                {{-- Status --}}
+                                <td class="p-4 align-top">
+                                    <div class="flex justify-center">
+                                        <span class="px-3 py-1 text-xs font-semibold rounded-full
+                                            {{ $item->status_pembayaran === 'pending'
+                                                ? 'bg-yellow-100 text-yellow-800'
+                                                : 'bg-green-100 text-green-800' }}">
+                                            {{ ucfirst($item->status_pembayaran) }}
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="6" class="p-6 text-center text-gray-500">
+                                    Belum ada riwayat pembayaran
+                                </td>
+                            </tr>
+                        @endforelse
+
+                        {{-- <tr class="border-b hover:bg-gray-50 transition duration-150">
                             <td class="p-4 align-top">
                                 <span class="block text-base font-medium text-gray-800">1 Nov</span>
                                 <span class="block text-sm text-gray-500">2024</span>
@@ -109,7 +161,7 @@
                                     </span>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> --}}
                         
                     </tbody>
                 </table>

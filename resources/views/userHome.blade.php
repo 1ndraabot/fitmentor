@@ -16,12 +16,12 @@
         </div>
         <div class="flex gap-10">
             <a href="#" class="h-fit px-6 py-1 bg-white rounded-full text-red-base font-medium">Beranda</a>
-            <a href="#" class="text-white font-medium">Dashboard Saya</a>
-            <a href="#" class="text-white font-medium">Riwayat</a>
-            <button class="flex gap-2">
-                <img src="#" alt="Profile">
-                <p class="text-white font-medium">User</p>
-            </button>
+            <a href="/find" class="text-white font-medium">Dashboard Saya</a>
+            <a href="/riwayat" class="text-white font-medium">Riwayat</a>
+            <a href="/profile" class="flex gap-2">
+                {{-- <img src="#" alt="Profile"> --}}
+                <p class="text-white font-medium">{{ session('nama_user') }}</p>
+            </a>
         </div>
     </div>
     {{-- Selection --}}

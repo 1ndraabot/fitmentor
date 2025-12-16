@@ -14,10 +14,10 @@
         </div>
         <div class="flex gap-10">
             <button class="px-[45px] py-5 bg-white rounded-2xl">
-                <h2 class="font-medium text-[40px] text-red-base">Cari Mentor</h2>
+                <a href="#" class="font-medium text-[40px] text-red-base">Cari Mentor</a>
             </button>
             <button class="px-11 py-5 border-4 border-white rounded-2xl">
-                <h2 class="text-white font-medium text-[40px]">Jadi Mentor</h2>
+                <a href="/mentorHome" class="text-white font-medium text-[40px]">Jadi Mentor</a>
             </button>            
         </div>
     </div>
